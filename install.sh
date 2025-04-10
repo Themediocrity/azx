@@ -28,16 +28,16 @@ generate_hash() {
 }
 
 read_config() {
-    [[ -s "$USER_CONFIG_FILE" ]] || return
-    while IFS== read -r key val; do
-        case "$key" in
-            name) INSTALLED_NAME="$val" ;;
-            path) INSTALLED_PATH="$val" ;;
-            version) INSTALLED_VERSION="$val" ;;
-            hash) INSTALLED_HASH="$val" ;;
-        esac
-    done < "$USER_CONFIG_FILE"
+    if [[ -s "$USER_CONFIG_FILE" ]]; then
+        source "$USER_CONFIG_FILE"
+    else
+        INSTALLED_NAME=""
+        INSTALLED_PATH=""
+        INSTALLED_VERSION=""
+        INSTALLED_HASH=""
+    fi
 }
+
 
 write_config() {
     cat > "$USER_CONFIG_FILE" <<EOF
@@ -108,7 +108,7 @@ check_dependencies
 mkdir -p "$USER_CONFIG_DIR"
 touch "$USER_CONFIG_FILE"
 
-CURRENT_VERSION="$(< "$VERSION_FILE" tr -d '\n')"
+CURRENT_VERSION="$(tr -d '\n' < "$VERSION_FILE")"
 CURRENT_HASH="$(generate_hash "$SCRIPT_SRC")"
 
 INSTALLED_NAME=""
