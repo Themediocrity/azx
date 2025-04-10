@@ -1,0 +1,1 @@
+7z:p7zip unzip:unzip unrar:unrar tar:tar gzip:gzip bzip2:bzip2 xz:xz zstd:zstd micro:micro
