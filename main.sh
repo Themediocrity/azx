@@ -11,8 +11,9 @@ while [[ $# -gt 0 ]]; do
 done
 set -- "${args[@]}"
 
-if [ $# -eq 0 ]; then
-    echo "Usage: $0 [-l] file [file2 ...]"
+# Обработка всех файлов, разделённых пробелами
+if [ ${#args[@]} -eq 0 ]; then
+    echo "Usage: $0 [-l] \"file1 file2 file3 ...\""
     exit 1
 fi
 
