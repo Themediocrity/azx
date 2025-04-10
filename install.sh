@@ -7,7 +7,7 @@ set -euo pipefail
 
 APP_NAME="azx"
 INSTALL_PATH="/bin"
-USER_CONFIG_DIR="$HOME/.config/Themediocrity-${APP_NAME}"
+USER_CONFIG_DIR="$HOME/.config/Themediocrity"
 USER_CONFIG_FILE="$USER_CONFIG_DIR/${APP_NAME}.conf"
 REQUIREMENTS_FILE="$(cd "$(dirname "$0")" && pwd)/requirements.txt"
 
