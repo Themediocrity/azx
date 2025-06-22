@@ -141,9 +141,9 @@ process_file() {
     fi
 
     case "$ext" in
-        7z)      7z x -o"$target_dir" "$file" ;;
-        zip)     unzip "$file" -d "$target_dir" ;;
-        rar)     unrar x "$file" "$target_dir/" ;;
+        7z)      7z x -y -o"$target_dir" "$file" ;;
+        zip)     unzip -o "$file" -d "$target_dir" ;;
+        rar)     unrar x -o+ "$file" "$target_dir/" ;;
         tar)     tar xf "$file" -C "$target_dir" ;;
         tar.gz|tgz)   tar xzf "$file" -C "$target_dir" ;;
         tar.bz2|tbz2) tar xjf "$file" -C "$target_dir" ;;
